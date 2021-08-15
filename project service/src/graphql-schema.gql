@@ -1,0 +1,52 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+directive @key(fields: String!) on OBJECT | INTERFACE
+
+directive @extends on OBJECT | INTERFACE
+
+directive @external on OBJECT | FIELD_DEFINITION
+
+directive @requires(fields: String!) on FIELD_DEFINITION
+
+directive @provides(fields: String!) on FIELD_DEFINITION
+
+type Investee {
+  _id: ID!
+  projects: [Project!]!
+}
+
+type Project {
+  _id: String!
+  name: String!
+  details: String!
+  type: String!
+  investee: Investee!
+  investeeId: String!
+}
+
+type Query {
+  getAllProjects: [Project!]!
+  FindProjectById(id: String!): Project!
+}
+
+type Mutation {
+  createProject(project: CreateProjectDto!): Project!
+  updateProject(id: String!, project: UpdateProjectDto!): Project!
+  removeProject(id: String!): Project!
+}
+
+input CreateProjectDto {
+  name: String!
+  details: String!
+  type: String!
+  investeeId: String!
+}
+
+input UpdateProjectDto {
+  name: String!
+  details: String!
+  type: String!
+  investeeId: String!
+}
